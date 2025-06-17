@@ -1,4 +1,6 @@
+# ETL KAFKA
 
+## Fase creazione containers
 ```powershell
 docker run --name test -it confluentinc/cp-kafka-connect /bin/bash
 docker exec test confluent-hub install --component-dir confluent-hub-components --no-prompt debezium/debezium-connector-postgresql:1.1.0
@@ -24,3 +26,17 @@ docker exec test confluent-hub install --component-dir confluent-hub-components 
 ```
 
 
+
+## Popolamento dati database Postgres
+
+```powershell
+docker exec -it postgres /bin/bash
+psql -U postgres-user customers
+```
+
+```sql
+CREATE TABLE customers (id TEXT PRIMARY KEY, name TEXT, age INT);
+INSERT INTO customers (id, name, age) VALUES ('5', 'fred', 34);
+INSERT INTO customers (id, name, age) VALUES ('7', 'sue', 25);
+INSERT INTO customers (id, name, age) VALUES ('2', 'bill', 51);
+```
