@@ -1,1 +1,0 @@
-docker compose -p kafka-etl up -d
